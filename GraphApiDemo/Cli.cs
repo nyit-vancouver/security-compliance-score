@@ -5,20 +5,17 @@ var settings = Settings.LoadSettings();
 // Initialize Graph
 InitializeGraph(settings);
 
-// Greet the user by name
-await GreetUserAsync();
-
 int choice = -1;
 
 while (choice != 0)
 {
     Console.WriteLine("Please choose one of the following options:");
     Console.WriteLine("0. Exit");
-    Console.WriteLine("1. Display access token");
-    Console.WriteLine("2. List my inbox");
-    Console.WriteLine("3. Send mail");
-    Console.WriteLine("4. List users (requires app-only)");
-    Console.WriteLine("5. Make a Graph call");
+    Console.WriteLine("1. Login - Me");
+    Console.WriteLine("2. [Me] Display access token");
+    Console.WriteLine("3. [Me] List my inbox");
+    Console.WriteLine("4. [Me] Send mail");
+    Console.WriteLine("5. [Client] List users");
 
     try
     {
@@ -37,24 +34,25 @@ while (choice != 0)
             Console.WriteLine("Goodbye...");
             break;
         case 1:
-            // Display access token
-            await DisplayAccessTokenAsync();
+            // Login - me
+            // Greet the user by name
+            await GreetUserAsync();
             break;
         case 2:
-            // List emails from user's inbox
-            await ListInboxAsync();
+            // [Me] Display access token
+            await DisplayAccessTokenAsync();
             break;
         case 3:
-            // Send an email message
-            await SendMailAsync();
+            // [Me] List emails from user's inbox
+            await ListInboxAsync();
             break;
         case 4:
-            // List users
-            await ListUsersAsync();
+            // [Me] Send an email message
+            await SendMailAsync();
             break;
         case 5:
-            // Run any Graph code
-            await MakeGraphCallAsync();
+            // [Client] List users
+            await ListUsersAsync();
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");
@@ -188,9 +186,4 @@ async Task ListUsersAsync()
         Console.WriteLine($"{ex.ToString()}");
         Console.WriteLine($"Error getting users: {ex.Message}");
     }
-}
-
-async Task MakeGraphCallAsync()
-{
-    // TODO
 }
