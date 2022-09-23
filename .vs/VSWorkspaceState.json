@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GraphApiDemo",
+    "\\project",
+    "\\project\\TestCases",
+    "\\project\\TestCases\\ConditionalAccess"
   ],
+  "SelectedNode": "\\project\\ITestCase.cs",
   "PreviewInSolutionExplorer": false
 }

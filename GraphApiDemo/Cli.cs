@@ -11,7 +11,7 @@ while (choice != 0)
 {
     Console.WriteLine("Please choose one of the following options:");
     Console.WriteLine("0. Exit");
-    Console.WriteLine("1. Login - Me");
+    Console.WriteLine("1. [Me] Greet User");
     Console.WriteLine("2. [Me] Display access token");
     Console.WriteLine("3. [Me] List my inbox");
     Console.WriteLine("4. [Me] Send mail");
@@ -34,7 +34,6 @@ while (choice != 0)
             Console.WriteLine("Goodbye...");
             break;
         case 1:
-            // Login - me
             // Greet the user by name
             await GreetUserAsync();
             break;
