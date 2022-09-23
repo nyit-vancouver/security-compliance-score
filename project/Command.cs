@@ -45,6 +45,6 @@ while (choice != 0)
 
     if (testCase != null)
     {
-        Console.WriteLine($"{testCase.name} : {(await TestHelper.Test(testCase) ? "PASS" : "FAIL")}");
+        Console.WriteLine($"{testCase.name} : {(await TestHelper.Test(testCase) ? "PASS" : "FAIL (" + testCase.solution + ")")}");
     }
 }

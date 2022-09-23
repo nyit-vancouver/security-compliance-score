@@ -13,6 +13,14 @@ namespace TestCases.ConditionalAccess
             }
         }
 
+        public string solution
+        {
+            get
+            {
+                return "A policy that enforces MFA for Admins must be enabled";
+            }
+        }
+
         public async Task<bool> Test(GraphServiceClient appClient)
         {
             var policies = await appClient.Policies.ConditionalAccessPolicies

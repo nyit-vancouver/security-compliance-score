@@ -6,6 +6,10 @@ interface ITestCase
     {
         get;
     }
+    string solution
+    {
+        get;
+    }
 
     Task<bool> Test(GraphServiceClient appClient);
 }
