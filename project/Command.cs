@@ -13,6 +13,7 @@ while (choice != 0)
     Console.WriteLine("0. Exit");
     Console.WriteLine("Conditional Access");
     Console.WriteLine("1. Require MFA for Admins");
+    Console.WriteLine("2. Block Legacy Authentication");
 
     try
     {
@@ -24,18 +25,18 @@ while (choice != 0)
         choice = -1;
     }
 
-    ITestCase testCase = null;
+    ITestCase? testCase = null;
 
     switch (choice)
     {
         case 0:
-            // Exit the program
             Console.WriteLine("Goodbye...");
             break;
         case 1:
-            // Conditional Access: Require MFA for Admins
             testCase = new TestCases.ConditionalAccess.RequireMFAForAdmins();
-            
+            break;
+        case 2:
+            testCase = new TestCases.ConditionalAccess.BlockLegacyAuthentication();
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");
@@ -44,6 +45,6 @@ while (choice != 0)
 
     if (testCase != null)
     {
-        Console.WriteLine($"{testCase.name()} : {(await TestHelper.Test(testCase) ? "PASS" : "FAIL")}");
+        Console.WriteLine($"{testCase.name} : {(await TestHelper.Test(testCase) ? "PASS" : "FAIL")}");
     }
 }

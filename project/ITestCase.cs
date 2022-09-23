@@ -2,7 +2,10 @@ using Microsoft.Graph;
 
 interface ITestCase
 {
-    string name();
+    string name
+    {
+        get;
+    }
 
     Task<bool> Test(GraphServiceClient appClient);
 }

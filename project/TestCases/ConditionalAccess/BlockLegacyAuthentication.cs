@@ -3,13 +3,12 @@ using Microsoft.Graph;
 
 namespace TestCases.ConditionalAccess
 {
-    class RequireMFAForAdmins : ITestCase
+    class BlockLegacyAuthentication : ITestCase
     {
         public string name
         {
-            get
-            {
-                return "Conditional Access - Require MFA for Admins";
+            get {
+                return "Conditional Access - Block legacy authentication";
             }
         }
 
@@ -22,7 +21,7 @@ namespace TestCases.ConditionalAccess
             var result = false;
             foreach (var policy in policies)
             {
-                if(policy.DisplayName == "Require MFA for admins")
+                if(policy.DisplayName == "Block legacy authentication")
                 {
                     result = policy.State == ConditionalAccessPolicyState.Enabled;
                 }
