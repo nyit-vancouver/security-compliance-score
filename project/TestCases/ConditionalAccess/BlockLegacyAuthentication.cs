@@ -30,10 +30,9 @@ namespace TestCases.ConditionalAccess
             foreach (var policy in policies)
             {
 
-                //policy.Conditions.i
                 if(policy.DisplayName == "Block legacy authentication")
                 {
-                    result = policy.State == ConditionalAccessPolicyState.Disabled;
+                    result = policy.State == ConditionalAccessPolicyState.Enabled;
                 }
             }
             return result;

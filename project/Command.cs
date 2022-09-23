@@ -11,9 +11,11 @@ while (choice != 0)
 {
     Console.WriteLine("Please choose one of the following options:");
     Console.WriteLine("0. Exit");
+    Console.WriteLine("Authentication");
+    Console.WriteLine("1. Password Authentication");
     Console.WriteLine("Conditional Access");
-    Console.WriteLine("1. Require MFA for Admins");
-    Console.WriteLine("2. Block Legacy Authentication");
+    Console.WriteLine("2. Require MFA for Admins");
+    Console.WriteLine("3. Block Legacy Authentication");
 
     try
     {
@@ -33,9 +35,12 @@ while (choice != 0)
             Console.WriteLine("Goodbye...");
             break;
         case 1:
-            testCase = new TestCases.ConditionalAccess.RequireMFAForAdmins();
+            testCase = new TestCases.Users.PasswordAuthentication();
             break;
         case 2:
+            testCase = new TestCases.ConditionalAccess.RequireMFAForAdmins();
+            break;
+        case 3:
             testCase = new TestCases.ConditionalAccess.BlockLegacyAuthentication();
             break;
         default:
