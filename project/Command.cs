@@ -18,6 +18,9 @@ while (choice != 0)
     Console.WriteLine("21. Block Legacy Authentication");
     Console.WriteLine("3. Secure Scores");
     Console.WriteLine("30. Role Overlap");
+    Console.WriteLine("31. One Admin");
+    Console.WriteLine("32. Legacy Authentication");
+    Console.WriteLine("33. Admin MFA");
 
     try
     {
@@ -46,7 +49,16 @@ while (choice != 0)
             testCase = new TestCases.ConditionalAccess.BlockLegacyAuthentication();
             break;
         case 30:
-            testCase = new TestCases.SecureScores.RoleOverlap(settings);
+            testCase = new TestCases.SecureScores.SecureScore(settings, "RoleOverlap");
+            break;
+        case 31:
+            testCase = new TestCases.SecureScores.SecureScore(settings, "OneAdmin");
+            break;
+        case 32:
+            testCase = new TestCases.SecureScores.SecureScore(settings, "BlockLegacyAuthentication");
+            break;
+        case 33:
+            testCase = new TestCases.SecureScores.SecureScore(settings, "AdminMFAV2");
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");

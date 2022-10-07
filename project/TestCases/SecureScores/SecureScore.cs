@@ -3,24 +3,28 @@ using Microsoft.Graph;
 
 namespace TestCases.SecureScores
 {
-    class RoleOverlap : ITestCase
+    class SecureScore : ITestCase
     {
         private Settings _settings;
+        private string _controlName;
 
-        public RoleOverlap(Settings settings)
+        public SecureScore(Settings settings, string controlName)
         {
             _settings = settings;
+            _controlName = controlName;
         }
+
+        private string _name = "Secure scores - ";
 
         public string name
         {
             get
             {
-                return "Secure scores - Role Overlap";
+                return _name + _controlName;
             }
         }
 
-        private string _solution = "Ensure that your administrators can accomplish their work with the least amount of privilege assigned to their account. Assigning users roles like Password Administrator or Exchange Online Administrator, instead of Global Administrator, reduces the likelihood of a global administrative privileged account being breached.";
+        private string _solution = "";
 
         public string solution
         {
@@ -45,11 +49,12 @@ namespace TestCases.SecureScores
 
             foreach (var secureScore in secureScores)
             {
-                Console.WriteLine("Secure score created: " + secureScore.CreatedDateTime.ToString());
                 foreach(var controlScore in secureScore.ControlScores)
                 {
-                    if(controlScore.ControlName == "RoleOverlap")
+                    if(controlScore.ControlName == _controlName)
                     {
+                        _solution = controlScore.Description;
+
                         object? percentage;
                         if (controlScore.AdditionalData.TryGetValue("scoreInPercentage", out percentage))
                         {
@@ -61,7 +66,7 @@ namespace TestCases.SecureScores
                                     return true;
                                 } else
                                 {
-                                    _solution = "Score percentage: " + p + " created at " + secureScore.CreatedDateTime.ToString() + ". " + _solution;
+                                    _solution = "Score percentage: " + p + " created at " + secureScore.CreatedDateTime.ToString() + ". " + controlScore.AdditionalData["implementationStatus"].ToString() + " " + _solution;
                                 }
                             }
                         }
