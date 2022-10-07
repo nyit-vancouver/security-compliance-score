@@ -11,11 +11,13 @@ while (choice != 0)
 {
     Console.WriteLine("Please choose one of the following options:");
     Console.WriteLine("0. Exit");
-    Console.WriteLine("Authentication");
-    Console.WriteLine("1. Password Authentication");
-    Console.WriteLine("Conditional Access");
-    Console.WriteLine("2. Require MFA for Admins");
-    Console.WriteLine("3. Block Legacy Authentication");
+    Console.WriteLine("1. Authentication");
+    Console.WriteLine("10. Password Authentication");
+    Console.WriteLine("2. Conditional Access");
+    Console.WriteLine("20. Require MFA for Admins");
+    Console.WriteLine("21. Block Legacy Authentication");
+    Console.WriteLine("3. Secure Scores");
+    Console.WriteLine("30. Role Overlap");
 
     try
     {
@@ -34,14 +36,17 @@ while (choice != 0)
         case 0:
             Console.WriteLine("Goodbye...");
             break;
-        case 1:
+        case 10:
             testCase = new TestCases.Users.PasswordAuthentication();
             break;
-        case 2:
+        case 20:
             testCase = new TestCases.ConditionalAccess.RequireMFAForAdmins();
             break;
-        case 3:
+        case 21:
             testCase = new TestCases.ConditionalAccess.BlockLegacyAuthentication();
+            break;
+        case 30:
+            testCase = new TestCases.SecureScores.RoleOverlap(settings);
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");
