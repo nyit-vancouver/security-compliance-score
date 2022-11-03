@@ -52,7 +52,7 @@ while (choice != 0)
             testCase = new TestCases.ConditionalAccess.BlockLegacyAuthentication();
             break;
         case 22:
-            testCase = new TestCases.ConditionalAccess.BlockRiskySignins();
+            testCase = new TestCases.ConditionalAccess.BlockingRiskySigninBehaviors();
             break;
         case 30:
             testCase = new TestCases.SecureScores.SecureScore(settings, "RoleOverlap");
