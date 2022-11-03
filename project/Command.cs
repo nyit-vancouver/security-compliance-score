@@ -16,6 +16,7 @@ while (choice != 0)
     Console.WriteLine("2. Conditional Access");
     Console.WriteLine("20. Require MFA for Admins");
     Console.WriteLine("21. Block Legacy Authentication");
+    Console.WriteLine("22. Blocking risky sign-in behaviors");
     Console.WriteLine("3. Secure Scores");
     Console.WriteLine("30. Role Overlap");
     Console.WriteLine("31. One Admin");
@@ -49,6 +50,9 @@ while (choice != 0)
             break;
         case 21:
             testCase = new TestCases.ConditionalAccess.BlockLegacyAuthentication();
+            break;
+        case 22:
+            testCase = new TestCases.ConditionalAccess.BlockRiskySignins();
             break;
         case 30:
             testCase = new TestCases.SecureScores.SecureScore(settings, "RoleOverlap");
