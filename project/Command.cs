@@ -24,6 +24,9 @@ while (choice != 0)
     Console.WriteLine("33. Admin MFA");
     Console.WriteLine("4. Policies");
     Console.WriteLine("40. Security Defaults");
+    Console.WriteLine("41. Self Service Password Reset");
+    Console.WriteLine("5. Domains");
+    Console.WriteLine("50. TXT SPF");
 
     try
     {
@@ -68,6 +71,12 @@ while (choice != 0)
             break;
         case 40:
             testCase = new TestCases.Policies.SecurityDefaults();
+            break;
+        case 41:
+            testCase = new TestCases.Policies.SelfServicePasswordReset();
+            break;
+        case 50:
+            testCase = new TestCases.Domains.TXTSpf();
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");
