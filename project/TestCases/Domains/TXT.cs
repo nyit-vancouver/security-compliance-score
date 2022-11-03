@@ -3,16 +3,21 @@ using Microsoft.Graph;
 
 namespace TestCases.Domains
 {
-    class TXTSpf : ITestCase
+    class TXT : ITestCase
     {
-
+        private string _textName;
         private string _solution = "Check TXT Spf record on domains";
+
+        public TXT(string textName)
+        {
+            _textName = textName;
+        }
 
         public string name
         {
             get
             {
-                return "Domains - TXT Spf";
+                return "Domains - TXT " + _textName;
             }
         }
 
@@ -44,7 +49,7 @@ namespace TestCases.Domains
                         if(m.RecordType == "Txt")
                         {
                             var t = (DomainDnsTxtRecord)m;
-                            if(t.Text.Contains("spf"))
+                            if(t.Text.Contains(_textName))
                             {
                                 domainResult = true;
                             }

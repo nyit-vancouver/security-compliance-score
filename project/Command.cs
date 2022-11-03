@@ -26,7 +26,9 @@ while (choice != 0)
     Console.WriteLine("40. Security Defaults");
     Console.WriteLine("41. Self Service Password Reset");
     Console.WriteLine("5. Domains");
-    Console.WriteLine("50. TXT SPF");
+    Console.WriteLine("50. TXT spf");
+    Console.WriteLine("51. TXT dkim");
+    Console.WriteLine("52. TXT dmarc");
 
     try
     {
@@ -76,7 +78,13 @@ while (choice != 0)
             testCase = new TestCases.Policies.SelfServicePasswordReset();
             break;
         case 50:
-            testCase = new TestCases.Domains.TXTSpf();
+            testCase = new TestCases.Domains.TXT("spf");
+            break;
+        case 51:
+            testCase = new TestCases.Domains.TXT("dkim");
+            break;
+        case 52:
+            testCase = new TestCases.Domains.TXT("dmarc");
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");
