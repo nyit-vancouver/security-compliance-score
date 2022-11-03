@@ -30,7 +30,7 @@ namespace TestCases.ConditionalAccess
             var result = false;
             foreach (var policy in policies)
             {
-                if(policy.DisplayName == "Require MFA for admins")
+                if (policy.DisplayName == "Require MFA for admins")
                 {
                     result = policy.State == ConditionalAccessPolicyState.Enabled;
                 }

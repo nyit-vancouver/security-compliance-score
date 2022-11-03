@@ -21,6 +21,8 @@ while (choice != 0)
     Console.WriteLine("31. One Admin");
     Console.WriteLine("32. Legacy Authentication");
     Console.WriteLine("33. Admin MFA");
+    Console.WriteLine("4. Policies");
+    Console.WriteLine("40. Security Defaults");
 
     try
     {
@@ -59,6 +61,9 @@ while (choice != 0)
             break;
         case 33:
             testCase = new TestCases.SecureScores.SecureScore(settings, "AdminMFAV2");
+            break;
+        case 40:
+            testCase = new TestCases.Policies.SecurityDefaults();
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");
