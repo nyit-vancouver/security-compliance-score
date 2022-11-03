@@ -1,4 +1,7 @@
-﻿Console.WriteLine("Security and compliance score - CLI\n");
+﻿using CsvHelper;
+using System.Globalization;
+
+Console.WriteLine("Security and compliance score - CLI\n");
 
 var settings = Settings.LoadSettings();
 
@@ -29,6 +32,7 @@ while (choice != 0)
     Console.WriteLine("50. TXT spf");
     Console.WriteLine("51. TXT dkim");
     Console.WriteLine("52. TXT dmarc");
+    Console.WriteLine("100. Export CSV");
 
     try
     {
@@ -85,6 +89,25 @@ while (choice != 0)
             break;
         case 52:
             testCase = new TestCases.Domains.TXT("dmarc");
+            break;
+        case 100:
+            var cases = new List<ITestCase>();
+            cases.Add(new TestCases.ConditionalAccess.BlockingRiskySigninBehaviors());
+            cases.Add(new TestCases.SecureScores.SecureScore(settings, "AdminMFAV2"));
+            cases.Add(new TestCases.Policies.SecurityDefaults());
+            cases.Add(new TestCases.Policies.SelfServicePasswordReset());
+            cases.Add(new TestCases.Domains.TXT("spf"));
+
+            var records = new List<CsvRecord>();
+            foreach(var c in cases) {
+                var result = await TestHelper.Test(c);
+                records.Add(new CsvRecord { Name = c.name, Result = result, Solution = c.solution });
+            }
+            using (var writer = new StreamWriter("export.csv"))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(records);
+            }
             break;
         default:
             Console.WriteLine("Invalid choice! Please try again.");

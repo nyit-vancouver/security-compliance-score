@@ -1,0 +1,6 @@
+Name,Result,Solution
+Conditional Access - Blocking risky sign-in behaviors,False,A policy that blocks risky sign-ins
+Secure scores - AdminMFAV2,True,"<p>Requiring multifactor authentication (MFA) for administrative roles makes it harder for attackers to access accounts. Administrative roles have higher permissions than typical users. If any of those accounts are compromised, your entire organization is exposed. At a minimum, protect the following roles:&nbsp;</p><ul><li>Global administrator&nbsp;</li><li>Authentication administrator&nbsp;</li><li>Billing administrator&nbsp;</li><li>Conditional Access administrator&nbsp;</li><li>Exchange administrator&nbsp;</li><li>Helpdesk administrator&nbsp;</li><li>Security administrator&nbsp;</li><li>SharePoint administrator&nbsp;</li><li>User administrator&nbsp;</li></ul>"
+Policies - Security Defaults,False,Security Defaults must be enabled
+Policies - Self Service Password Reset,True,Self Service Password Reset must be enabled
+Domains - TXT spf,False,Check TXT Spf record on domains [nyitlab.edu]
