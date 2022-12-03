@@ -18,7 +18,8 @@ namespace TestCases.Policies
         {
             get
             {
-                return "Security Defaults must be enabled";
+                //Jenny-2022-change return output alert
+                return "Security Defaults is recommended to be enabled";
             }
         }
 
