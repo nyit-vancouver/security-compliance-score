@@ -30,7 +30,10 @@ namespace TestCases.ConditionalAccess
             var result = false;
             foreach (var policy in policies)
             {
-                if (policy.DisplayName == "Require MFA for admins")
+                /*Jenny-2022-policy of MFA for Admins
+                  for future work, change fix string to variable input that can be configured by user
+                */
+                if (policy.DisplayName == "Require MFA for admins")//the name should be configured instead of hard code
                 {
                     result = policy.State == ConditionalAccessPolicyState.Enabled;
                 }
