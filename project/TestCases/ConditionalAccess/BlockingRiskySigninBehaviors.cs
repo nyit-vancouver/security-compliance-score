@@ -30,7 +30,10 @@ namespace TestCases.ConditionalAccess
             var result = false;
             foreach (var policy in policies)
             {
-                if (policy.DisplayName == "Blocking risky sign-in behaviors")
+                /*Jenny-2022-policy of blocking risky behavious
+                  for future work, change fix string to variable input that can be configured by user
+                */
+                if (policy.DisplayName == "Blocking risky sign-in behaviors")//the name should be configured instead of hard code
                 {
                     result = policy.State == ConditionalAccessPolicyState.Enabled;
                 }
