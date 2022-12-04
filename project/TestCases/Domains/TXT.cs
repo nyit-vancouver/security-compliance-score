@@ -17,7 +17,7 @@ namespace TestCases.Domains
         {
             get
             {
-                return "Domains - TXT " + _textName;
+                return "Domains - TXT " + _textName; 
             }
         }
 
@@ -34,19 +34,21 @@ namespace TestCases.Domains
             var domains = await appClient.Domains
             .Request()
             .GetAsync();
-
+            
+            /* Samuel-2022- Here we check whether domains have spf and/or dkim and/or dmarc record in them */
+            
             var result = false;
-            foreach (var domain in domains)
+            foreach (var domain in domains) /*Here we are searching for domains that do not have spf record in them */
             {
                 var domainResult = false;
-                var records = await appClient.Domains[domain.Id].ServiceConfigurationRecords
+                var records = await appClient.Domains[domain.Id].ServiceConfigurationRecords 
                 .Request()
                 .Filter("")
                 .GetAsync();
 
                 var pageIterator = PageIterator<DomainDnsRecord>.CreatePageIterator(appClient, records,
                     (m) => {
-                        if(m.RecordType == "Txt")
+                        if(m.RecordType == "Txt")  /*Here we serch for TXT in service configutation records */
                         {
                             var t = (DomainDnsTxtRecord)m;
                             if(t.Text.Contains(_textName))
