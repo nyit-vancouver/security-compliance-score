@@ -33,7 +33,8 @@ namespace TestCases.SecureScores
                 return _solution;
             }
         }
-
+        
+        /* Samuel-2022- In this case we do an API call for security score to check security percentage. */
         public async Task<bool> Test(GraphServiceClient appClient)
         {
             var secureScores = await appClient.Security.SecureScores
@@ -56,7 +57,9 @@ namespace TestCases.SecureScores
                         _solution = controlScore.Description;
 
                         object? percentage;
-                        if (controlScore.AdditionalData.TryGetValue("scoreInPercentage", out percentage))
+                        if (controlScore.AdditionalData.TryGetValue("scoreInPercentage", out percentage)) /* Here we check if the secure score percentage is 100. If it's
+                        not 100 we give a solution to improve the security score */
+      
                         {
                             float p;
                             if(float.TryParse(percentage.ToString(), out p))
