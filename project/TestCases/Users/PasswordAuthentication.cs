@@ -7,7 +7,9 @@ namespace TestCases.Users
     {
 
         private string _solution = "Disable password authentication methods on users";
-
+        
+        /* Samuel 2022 -  In this code we check if any user uses password authentication. */
+        
         public string name
         {
             get
@@ -26,18 +28,19 @@ namespace TestCases.Users
 
         public async Task<bool> Test(GraphServiceClient appClient)
         {
-            var users= await appClient.Users
+            var users= await appClient.Users  /* here we get a list of all users */
             .Request()
             .GetAsync();
 
             var result = true;
-            foreach (var user in users)
+            foreach (var user in users) /* here we capture authentication of one user */
             {
                 var methods = await appClient.Users[user.Id].Authentication.Methods
                 .Request()
                 .GetAsync();
-
-                var pageIterator = PageIterator<AuthenticationMethod>.CreatePageIterator(appClient, methods,
+            
+                /* Here we check if any user matches has password authentication enabled */
+                var pageIterator = PageIterator<AuthenticationMethod>.CreatePageIterator(appClient, methods,   
                     (m) => {
                         if(m.ToString() == "Microsoft.Graph.PasswordAuthenticationMethod")
                         {
